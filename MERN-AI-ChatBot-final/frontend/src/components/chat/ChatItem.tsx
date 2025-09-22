@@ -209,9 +209,9 @@ const ChatItem = ({
         my: 1,
       }}
     >
-      <Avatar sx={{ ml: "0" }}>
-        <img src="openai.png" alt="openai" width={"30px"} />
-      </Avatar>
+        <Avatar sx={{ ml: "0" }}>
+          <img src="cc-logo.svg" alt="cc-logo" width={"30px"} />
+        </Avatar>
       <Box sx={{ flex: 1 }}>
         {!messageBlocks && (
           <Typography sx={{ fontSize: "20px", color: isDarkMode ? "white" : "black" }}>{cleanContent(content)}</Typography>

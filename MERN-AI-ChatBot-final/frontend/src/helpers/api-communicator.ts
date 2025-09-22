@@ -1,6 +1,13 @@
 import axios from "axios";
+
+// Create axios instance with base URL
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1",
+  withCredentials: true,
+});
+
 export const loginUser = async (email: string, password: string) => {
-  const res = await axios.post("/user/login", { email, password });
+  const res = await api.post("/user/login", { email, password });
   if (res.status !== 200) {
     throw new Error("Unable to login");
   }
@@ -13,7 +20,7 @@ export const signupUser = async (
   email: string,
   password: string
 ) => {
-  const res = await axios.post("/user/signup", { name, email, password });
+  const res = await api.post("/user/signup", { name, email, password });
   if (res.status !== 201) {
     throw new Error("Unable to Signup");
   }
@@ -22,7 +29,7 @@ export const signupUser = async (
 };
 
 export const checkAuthStatus = async () => {
-  const res = await axios.get("/user/auth-status");
+  const res = await api.get("/user/auth-status");
   if (res.status !== 200) {
     throw new Error("Unable to authenticate");
   }
@@ -32,7 +39,7 @@ export const checkAuthStatus = async () => {
 
 export const sendChatRequest = async (message: string, conversationId?: string) => {
   try {
-    const res = await axios.post("/chat/new", { message, conversationId });
+    const res = await api.post("/chat/new", { message, conversationId });
     if (res.status !== 200) {
       throw new Error("Unable to send chat");
     }
@@ -53,7 +60,7 @@ export const sendChatRequest = async (message: string, conversationId?: string) 
 
 export const getUserChats = async () => {
   try {
-    const res = await axios.get("/chat/all-chats");
+    const res = await api.get("/chat/all-chats");
     if (res.status !== 200) {
       throw new Error("Unable to load chats");
     }
@@ -74,7 +81,7 @@ export const getUserChats = async () => {
 
 export const deleteConversation = async (conversationId: string) => {
   try {
-    const res = await axios.delete(`/chat/conversation/${conversationId}`);
+    const res = await api.delete(`/chat/conversation/${conversationId}`);
     if (res.status !== 200) {
       throw new Error("Unable to delete conversation");
     }
@@ -95,7 +102,7 @@ export const deleteConversation = async (conversationId: string) => {
 
 export const deleteUserChats = async () => {
   try {
-    const res = await axios.delete("/chat/delete");
+    const res = await api.delete("/chat/delete");
     if (res.status !== 200) {
       throw new Error("Unable to delete chats");
     }
@@ -116,7 +123,7 @@ export const deleteUserChats = async () => {
 
 export const logoutUser = async () => {
   try {
-    const res = await axios.get("/user/logout");
+    const res = await api.get("/user/logout");
     if (res.status !== 200) {
       throw new Error("Unable to logout");
     }

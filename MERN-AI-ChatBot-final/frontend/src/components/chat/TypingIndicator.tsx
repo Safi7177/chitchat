@@ -18,9 +18,9 @@ const TypingIndicator = () => {
         alignItems: "center",
       }}
     >
-      <Avatar sx={{ ml: "0" }}>
-        <img src="openai.png" alt="openai" width={"30px"} />
-      </Avatar>
+        <Avatar sx={{ ml: "0" }}>
+          <img src="cc-logo.svg" alt="cc-logo" width={"30px"} />
+        </Avatar>
       <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
         <Typography sx={{ fontSize: "20px", color: isDarkMode ? "gray" : "#666" }}>
           AI is typing

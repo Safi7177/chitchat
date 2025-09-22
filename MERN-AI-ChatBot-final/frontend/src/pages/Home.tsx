@@ -1,7 +1,6 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import TypingAnim from "../components/typer/TypingAnim";
-import Footer from "../components/footer/Footer";
 
 const Home = () => {
   const theme = useTheme();
@@ -35,12 +34,6 @@ const Home = () => {
             alt="robot"
             style={{ width: "200px", margin: "auto" }}
           />
-          <img
-            className="image-inverted rotate"
-            src="openai.png"
-            alt="openai"
-            style={{ width: "200px", margin: "auto" }}
-          />
         </Box>
         <Box sx={{ display: "flex", mx: "auto" }}>
           <img
@@ -59,7 +52,6 @@ const Home = () => {
           />
         </Box>
       </Box>
-      <Footer />
     </Box>
   );
 };

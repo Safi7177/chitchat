@@ -5,9 +5,13 @@ import Logo from "./shared/Logo";
 import { useAuth } from "../context/AuthContext";
 import NavigationLink from "./shared/NavigationLink";
 import ThemeToggle from "./shared/ThemeToggle";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const auth = useAuth();
+  const location = useLocation();
+  const isChatPage = location.pathname === '/chat';
+  
   return (
     <AppBar
       sx={{ bgcolor: "transparent", position: "static", boxShadow: "none" }}
@@ -18,12 +22,14 @@ const Header = () => {
           <ThemeToggle />
           {auth?.isLoggedIn ? (
             <>
-              <NavigationLink
-                bg="#00fffc"
-                to="/chat"
-                text="Go To Chat"
-                textColor="black"
-              />
+              {!isChatPage && (
+                <NavigationLink
+                  bg="#00fffc"
+                  to="/chat"
+                  text="Go To Chat"
+                  textColor="black"
+                />
+              )}
               <NavigationLink
                 bg="#51538f"
                 textColor="white"
